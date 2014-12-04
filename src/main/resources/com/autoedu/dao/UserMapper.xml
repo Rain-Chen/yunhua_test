@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.autoedu.dao.UserMapper">
+    <resultMap type="com.autoedu.bean.User" id="UserResult">
+        <id 	property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="salt" column="salt"/>
+    </resultMap>
+    <insert id="createUser" parameterType="com.autoedu.bean.User">
+        INSERT INTO USER(id,username,password,salt) values(#{id},#{username},#{password},#{salt})
+    </insert>
+    <update id="updateUser">
+        UPDATE USER SET username=#{username}, password=#{password} WHERE id=#{id}
+    </update>
+    <delete id="deleteUser">
+        DELETE FROM USER WHERE id = #{id}
+    </delete>
+    <select id="findOne" resultType="com.autoedu.bean.User">
+        SELECT id,username,password,salt FROM USER where username=#{username}
+    </select>
+    <select id="findById" resultType="com.autoedu.bean.User">
+        SELECT id,username,password,salt FROM USER where id=#{id}
+    </select>
+    <select id="findAll" resultMap="UserResult">
+        SELECT * FROM USER
+    </select>
+</mapper>
