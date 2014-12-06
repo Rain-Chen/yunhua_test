@@ -97,14 +97,14 @@
                     <label class="sr-only" for="username">Username</label>
                     <div class="input-group">
                         <div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Type Username..."/>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Type Username here..."/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="password">Password</label>
                     <div class="input-group">
                         <div class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></div>
-                        <input type="text" class="form-control" id="password" name="password" placeholder="Type Password...">
+                        <input type="text" class="form-control" id="password" name="password" placeholder="Type Password here...">
                     </div>
                 </div>
                 <div style="color: red">${lf}</div>
