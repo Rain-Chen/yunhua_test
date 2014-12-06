@@ -33,7 +33,6 @@ public class TestUserService {
         user.setId(UUID.randomUUID().toString());
         user.setUsername("rainchen");
         user.setPassword("123");
-        user.setSalt(DigestUtils.md5DigestAsHex(new Date().toString().getBytes()));
         System.out.println(user);
         userService.createUser(user);
     }
