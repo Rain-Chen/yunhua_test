@@ -18,9 +18,7 @@ public class PasswordHelper {
 
     private RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
 
-    @Value("${password.algorithmName}")
     private String algorithmName = "md5";
-    @Value("${password.hashIterations}")
     private int hashIterations = 2;
 
     public void setRandomNumberGenerator(RandomNumberGenerator randomNumberGenerator) {
@@ -47,5 +45,15 @@ public class PasswordHelper {
         ).toHex();
 
         user.setPassword(newPassword);
+    }
+
+    public String decryptPassword(String userPassword,String credentialsSalt){
+        String password = new SimpleHash(
+                algorithmName,
+                userPassword,
+                ByteSource.Util.bytes(credentialsSalt),
+                hashIterations
+        ).toHex();
+        return password;
     }
 }
