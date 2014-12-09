@@ -107,7 +107,7 @@
                         <input type="text" class="form-control" id="password" name="password" placeholder="Type Password here...">
                     </div>
                 </div>
-                <div style="color: red">${lf}</div>
+                <div id="lf" style="color: red">${lf}</div>
                 <button type="submit" class="btn btn-success btn-lg btn-block">登录</button>
             </form>
         </div>
@@ -120,5 +120,22 @@
         </div>
     </div>
 </footer>
+<script  type="text/javascript">
+    $("#username").blur(function(){
+        $.ajax({
+            url: "${pageContext.request.contextPath}/usernameUnique",
+            data: {
+                username: $("#username").val()
+            },
+            success: function( data ) {
+                console.info(data);
+                var obj = $.parseJSON(data)
+                if(obj.success){
+                    $( "#lf" ).html( "<strong>" + "用户不存在" + "</strong>");
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
