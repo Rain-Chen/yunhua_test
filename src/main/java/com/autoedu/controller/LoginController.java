@@ -58,4 +58,18 @@ public class LoginController {
         map.addAttribute("lf","用户名为空");
         return "login";
     }
+    
+    @RequestMapping("/usernameUnique")
+    @ResponseBody
+    public String usernameUnique(
+            String username
+    ){
+        System.out.println(username);
+        User user = userService.findOne(username);
+        if (user == null){
+            return "{\"success\":true}";
+        }else {
+            return "{\"success\":false}";
+        }
+    }
 }
